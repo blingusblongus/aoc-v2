@@ -14,6 +14,10 @@ YEAR=$1
 DAY=$2
 LANGUAGE=$3
 
+if [ $DAY -lt 10 ]; then
+  DAY="0$DAY"
+fi
+
 # Create directory structure
 echo "Setting up $YEAR/$DAY for $LANGUAGE"
 mkdir -p "$YEAR/$DAY/$LANGUAGE"
