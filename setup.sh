@@ -18,6 +18,14 @@ LANGUAGE=$3
 echo "Setting up $YEAR/$DAY for $LANGUAGE"
 mkdir -p "$YEAR/$DAY/$LANGUAGE"
 
+if [ ! -f "$YEAR/$DAY/_answers.txt" ]; then
+  printf "part1=\npart2=" >"$YEAR/$DAY/_answers.txt"
+fi
+
+if [ ! -f "$YEAR/$DAY/_input.txt" ]; then
+  touch "$YEAR/$DAY/_input.txt"
+fi
+
 PUZZLE_DIR="$YEAR/$DAY/$LANGUAGE"
 
 copy_template() {
