@@ -48,10 +48,3 @@ copy_template "$LANGUAGE"
 
 echo "to start, run:"
 echo "cd $PUZZLE_DIR && npm run test"
-
-# This may be too annoying to deal with
-# curl "https://adventofcode.com/$YEAR/day/$DAY/input" >"$YEAR/$DAY/$LANGUAGE/input.txt"
-# curl "https://adventofcode.com/$YEAR/day/$DAY" -o "$YEAR/$DAY/README.md"
-# Extract text from <main> or <article> tags
-# xmllint --html --xpath "//main//text() | //article//text()" "$YEAR/$DAY/README.md" 2>/dev/null >"$YEAR/$DAY/question.txt"
-# echo "Extracted puzzle text to $YEAR/$DAY/question.txt"
