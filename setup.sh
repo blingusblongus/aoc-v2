@@ -46,5 +46,7 @@ copy_template() {
 
 copy_template "$LANGUAGE"
 
-echo "to start, run:"
-echo "cd $PUZZLE_DIR && npm run test"
+cd $PUZZLE_DIR && npm i
+
+echo "to start:"
+echo "cd $PUZZLE_DIR && npm test"
