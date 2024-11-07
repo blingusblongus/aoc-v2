@@ -1,3 +1,6 @@
 **/node_modules
 **/dist
 **/instructions.*
+**/_input.txt
+**/_answers.txt
+
