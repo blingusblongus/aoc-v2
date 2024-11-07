@@ -14,4 +14,17 @@ describe("part2", () => {
       expect(result).toEqual(answer);
     });
   }
+
+  describe("test cases", () => {
+    type TestCase = { in: string; out: string };
+    const cases: TestCase[] = [
+      // { in: "1122", out: "3" },
+    ];
+
+    cases.forEach((t) => {
+      it(`for "${t.in}" returns "${t.out}"`, () => {
+        expect(part2(t.in)).toBe(t.out);
+      });
+    });
+  });
 });
