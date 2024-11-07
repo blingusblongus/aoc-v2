@@ -8,8 +8,9 @@ const input = readInput(inputUrl);
 
 if (!input) {
   expect.fail("No input");
-  process.exit(1);
 }
+
+console.log("Part 1:", part1(input));
 
 describe("part1", () => {
   const answer = getAnswer(process.cwd() + "/../_answers.txt", "part1");

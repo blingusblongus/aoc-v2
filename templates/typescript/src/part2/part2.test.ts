@@ -5,6 +5,8 @@ import { getAnswer, readInput } from "../../../../../utils/utils.js";
 
 const input = readInput(process.cwd() + "/../_input.txt");
 
+console.log("Part 2:", part2(input));
+
 describe("part2", () => {
   const answer = getAnswer(process.cwd() + "/../_answers.txt", "part2");
 
