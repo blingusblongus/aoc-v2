@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2023", // ECMAScript target version
+    "module": "ESNext", // Module code generation
+    "moduleResolution": "Bundler",
+    "strict": true, // Enable strict type-checking options
+    "esModuleInterop": true, // Enables compatibility with ES6 module imports
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "rootDir": ".", // Root directory for input files
+    "baseUrl": ".",
+    "paths": {
+      "@utils": ["../../../utils/*"],
+      "@problem": ["."]
+    },
+    "noEmit": true,
+    "checkJs": true,
+    "allowJs": true
+  },
+  "include": ["src/**/*"], // Include all files in src
+  "exclude": ["node_modules/**/*", "dist/**/*"] // Exclude node_modules and compiled files
+}
