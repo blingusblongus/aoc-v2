@@ -4,10 +4,6 @@ const part1 = (input: string) => {
     .split(/\n/)
     .map((line) => line.split(""));
 
-  // const resultGrid = new Array(grid.length).fill(
-  //   new Array(grid[0].length).fill("."),
-  // );
-
   let totalFound = 0;
   for (let y = 0; y < grid.length; ++y) {
     for (let x = 0; x < grid[y].length; ++x) {
