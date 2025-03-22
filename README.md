@@ -1,0 +1,1 @@
+- `./setup.sh <year> <day> <language>`
