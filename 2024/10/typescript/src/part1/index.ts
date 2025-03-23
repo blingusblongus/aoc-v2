@@ -19,7 +19,6 @@ const part1 = (input: string) => {
     found = [];
     getPaths(topo, start, [], start, found);
     paths += found.length;
-    // console.log("paths from ", start, found.length);
   }
 
   return paths.toString();
@@ -56,12 +55,10 @@ const getPaths = (
   // Base: if end of path, return count + 1;
   if (getHeight(topo, c) === 9) {
     if (found.some((found) => found.x === c.x && found.y === c.y)) {
-      // console.log("path already found");
       visited.pop();
       return;
     }
 
-    // console.log("Path found", visited);
     found.push(c);
     return;
   }
@@ -71,7 +68,6 @@ const getPaths = (
   for (let dir of directions) {
     const next = step(c, dir);
     if (!inBounds(topo, next)) continue;
-    // console.log(topo);
     if (getHeight(topo, next) !== getHeight(topo, c) + 1) continue;
     if (visited.some((step) => step.x === next.x && step.y === next.y))
       continue;
