@@ -8,10 +8,12 @@ const part1 = (input: string) => {
     stones = blinkStr(strToStones(stones));
   }
 
+  console.time("count");
   let spaces = 0;
   for (let char of stones) {
     if (char === " ") spaces++;
   }
+  console.timeEnd("count");
 
   return spaces + 1;
 };
