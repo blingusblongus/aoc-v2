@@ -1,85 +1,63 @@
-const part2 = (input: string) => {
-  console.log("part2========");
+type StoneMap = { [key: string]: { next?: string[]; count: number } };
+const part2 = (input: string, blinks: number) => {
   let stones = input;
-  // stones = "125 17";
 
-  let blinks = 35;
-  console.time("blink");
+  let stoneMap: StoneMap = {};
+  let nextStoneMap: StoneMap = {};
+
+  for (let stone of stones.trim().split(" ")) {
+    addToStoneMap(stoneMap, stoneMap, stone, 1);
+  }
+
+  // console.log("initial stoneMap", stoneMap);
+
+  // console.time("blink timer");
   for (let i = 1; i <= blinks; ++i) {
-    console.timeLog("blink", i);
-    stones = blinkStr(stones);
-    console.log("num stones", stones.trim().split(" ").length);
-    // console.log(i, "blinks", stones);
-  }
+    for (let stone in stoneMap) {
+      const nextStones = stoneMap[stone].next;
 
-  console.time("count");
-  let spaces = 0;
-  for (let char of stones) {
-    if (char === " ") spaces++;
-  }
-  console.timeEnd("count");
+      if (!nextStones) throw Error("next stones logically must be set");
 
-  return spaces + 1;
-};
-
-export const blinkStr = (stones: string): string => {
-  let result = "";
-
-  let word = "";
-  for (let i = 0; i < stones.length + 1; ++i) {
-    const char = stones[i];
-    if (char === " " || !char) {
-      const stone = new Stone(word);
-      // console.log(stone);
-
-      for (let s of stone.change()) {
-        if (result !== "") {
-          result += " " + s.str;
-        } else {
-          result = s.str;
-        }
-      }
-      word = "";
-    } else {
-      word += char;
+      nextStones.forEach((s) =>
+        addToStoneMap(stoneMap, nextStoneMap, s, stoneMap[stone].count),
+      );
     }
+
+    stoneMap = nextStoneMap;
+    nextStoneMap = {};
+    // console.timeLog("blink timer", i);
   }
 
-  return result.trim();
-};
-
-export const strToStones = (input: string) => {
-  return input
-    .trim()
-    .split(/\s/)
-    .map((s) => new Stone(s));
-};
-
-export const printStones = (stones: Stone[]): string => {
-  return stones.map((stone) => stone.str).join(" ");
-};
-
-class Stone {
-  public str;
-  public int;
-
-  public change() {
-    if (this.int === 0) {
-      return [new Stone("1")];
-    } else if (this.str.length % 2 === 0) {
-      const half = this.str.length / 2;
-      return [
-        new Stone(this.str.substring(0, half)),
-        new Stone(this.str.substring(half)),
-      ];
-    } else {
-      return [new Stone((this.int * 2024).toString())];
-    }
+  let count = 0;
+  for (let stone in stoneMap) {
+    count += stoneMap[stone].count;
   }
-  constructor(strRepresentation: string) {
-    this.int = parseInt(strRepresentation);
-    this.str = this.int.toString();
+
+  // console.log(count);
+  return count.toString();
+};
+
+const addToStoneMap = (
+  fromMap: StoneMap,
+  toMap: StoneMap,
+  stone: string,
+  count: number,
+) => {
+  toMap[stone] = {
+    next: fromMap[stone]?.next || transform(stone),
+    count: (toMap[stone]?.count || 0) + (count || 1),
+  };
+};
+
+const transform = (stone: string) => {
+  if (stone === "0") return ["1"];
+  if (stone.length % 2 === 0) {
+    let mid = stone.length / 2;
+    return [stone.substring(0, mid), stone.substring(mid)].map((s) =>
+      parseInt(s).toString(),
+    );
   }
-}
+  return [(parseInt(stone) * 2024).toString()];
+};
 
 export default part2;

@@ -2,18 +2,18 @@ const part1 = (input: string) => {
   let stones = input;
 
   let blinks = 25;
-  console.time("blink");
+  // console.time("blink");
   for (let i = 1; i <= blinks; ++i) {
-    console.timeLog("blink", i);
+    // console.timeLog("blink", i);
     stones = blinkStr(strToStones(stones));
   }
 
-  console.time("count");
+  // console.time("count");
   let spaces = 0;
   for (let char of stones) {
     if (char === " ") spaces++;
   }
-  console.timeEnd("count");
+  // console.timeEnd("count");
 
   return spaces + 1;
 };
