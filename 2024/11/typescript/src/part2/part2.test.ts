@@ -5,28 +5,23 @@ import { getAnswer, readInput } from "../../../../../utils/utils.js";
 
 const input = readInput(process.cwd() + "/../_input.txt");
 
-console.log("Part 2:", part2(input));
+console.log("Part 2:", part2(input, 75));
 
 describe("part2", () => {
   const answer = getAnswer(process.cwd() + "/../_answers.txt", "part2");
 
   if (answer) {
     it("matches known answer", () => {
-      const result = part2(input);
+      const result = part2(input, 75);
       expect(result).toEqual(answer);
     });
   }
 
-  describe("test cases", () => {
-    type TestCase = { in: string; out: string };
-    const cases: TestCase[] = [
-      // { in: "1122", out: "3" },
-    ];
-
-    cases.forEach((t) => {
-      it(`for "${t.in}" returns "${t.out}"`, () => {
-        expect(part2(t.in)).toBe(t.out);
-      });
+  describe("maintain part1 behavior", () => {
+    it("works after 1 blink", () => {
+      const start = "125 17";
+      const result = part2(start, 1);
+      expect(result).toEqual("3");
     });
   });
 });
