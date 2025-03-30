@@ -24,9 +24,7 @@ describe("part1", () => {
 
   describe("test cases", () => {
     type TestCase = { in: string; out: string };
-    const cases: TestCase[] = [
-      // { in: "1122", out: "3" },
-    ];
+    const cases: TestCase[] = [{ in: `1122`, out: `3` }];
 
     cases.forEach((t) => {
       it(`for "${t.in}" returns "${t.out}"`, () => {

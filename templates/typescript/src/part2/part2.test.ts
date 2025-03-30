@@ -20,7 +20,7 @@ describe("part2", () => {
   describe("test cases", () => {
     type TestCase = { in: string; out: string };
     const cases: TestCase[] = [
-      // { in: "1122", out: "3" },
+      // { in: `1122`, out: `3` },
     ];
 
     cases.forEach((t) => {
