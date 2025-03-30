@@ -20,7 +20,52 @@ describe("part2", () => {
   describe("test cases", () => {
     type TestCase = { in: string; out: string };
     const cases: TestCase[] = [
-      // { in: "1122", out: "3" },
+      {
+        in: `AAAA
+BBCD
+BBCC
+EEEC`,
+        out: `80`,
+      },
+      {
+        in: `OOOOO
+OXOXO
+OOOOO
+OXOXO
+OOOOO`,
+        out: `436`,
+      },
+      {
+        in: `EEEEE
+EXXXX
+EEEEE
+EXXXX
+EEEEE`,
+        out: `236`,
+      },
+      {
+        in: `AAAAAA
+AAABBA
+AAABBA
+ABBAAA
+ABBAAA
+AAAAAA`,
+        out: `368`,
+      },
+
+      {
+        in: `RRRRIICCFF
+RRRRIICCCF
+VVRRRCCFFF
+VVRCCCJFFF
+VVVVCJJCFE
+VVIVCCJJEE
+VVIIICJJEE
+MIIIIIJJEE
+MIIISIJEEE
+MMMISSJEEE`,
+        out: `1206`,
+      },
     ];
 
     cases.forEach((t) => {
